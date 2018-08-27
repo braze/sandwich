@@ -48,7 +48,6 @@ public class DetailActivity extends AppCompatActivity {
             // EXTRA_POSITION not found in intent
             closeOnError();
             Log.v(TAG, "EXTRA_POSITION not found in intent");
-
             return;
         }
 
@@ -75,8 +74,12 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void populateUI(Sandwich sandwich) {
-        //prepare field "Also known as"
+        String ingredients = "";
         String alsoKnowsAs = "";
+        String place = sandwich.getPlaceOfOrigin();
+        String description = sandwich.getDescription();
+
+        //prepare field "Also known as"
         StringBuilder sb = new StringBuilder();
         for (String s : sandwich.getAlsoKnownAs()) {
             sb.append(s).append(" ");
@@ -86,8 +89,7 @@ public class DetailActivity extends AppCompatActivity {
             alsoKnowsAs = "Other names are unknown";
         }
 
-        //prepare field ingredients
-        String ingredients = "";
+        //prepare ingredients
         //clear StringBuilder
         sb.setLength(0);
 
@@ -103,10 +105,20 @@ public class DetailActivity extends AppCompatActivity {
             ingredients = ingredients.substring(0, ingredients.length() - 1);
         }
 
+        //check for place
+        if (place.isEmpty()) {
+            place = "Unknown";
+        }
+
+        //check for description
+        if (description.isEmpty()) {
+            description = "no description";
+        }
+
         //set TextViews
         mAlsoKnowsAs.setText(alsoKnowsAs);
-        mPlaceOfOrigin.setText(sandwich.getPlaceOfOrigin());
+        mPlaceOfOrigin.setText(place);
         mIngredients.setText(ingredients);
-        mDescription.setText(sandwich.getDescription());
+        mDescription.setText(description);
     }
 }

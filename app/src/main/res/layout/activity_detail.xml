@@ -16,6 +16,7 @@
             android:layout_marginBottom="@dimen/activity_vertical_margin"
             android:adjustViewBounds="true"
             android:contentDescription="@string/sandwich_picture_content_description"
+            android:visibility="visible"
             android:scaleType="centerCrop" />
 
         <ScrollView
