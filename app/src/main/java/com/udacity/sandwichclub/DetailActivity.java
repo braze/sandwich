@@ -3,7 +3,6 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,7 +13,6 @@ import com.udacity.sandwichclub.utils.JsonUtils;
 
 public class DetailActivity extends AppCompatActivity {
 
-    private static String TAG = "DetailActivity";
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
@@ -40,14 +38,12 @@ public class DetailActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent == null) {
             closeOnError();
-            Log.v(TAG, "intent = null");
         }
 
         int position = intent.getIntExtra(EXTRA_POSITION, DEFAULT_POSITION);
         if (position == DEFAULT_POSITION) {
             // EXTRA_POSITION not found in intent
             closeOnError();
-            Log.v(TAG, "EXTRA_POSITION not found in intent");
             return;
         }
 
@@ -56,8 +52,6 @@ public class DetailActivity extends AppCompatActivity {
         Sandwich sandwich = JsonUtils.parseSandwichJson(json);
         if (sandwich == null) {
             // Sandwich data unavailable
-            Log.v(TAG, "Sandwich data unavailable");
-
             closeOnError();
             return;
         }
@@ -121,4 +115,5 @@ public class DetailActivity extends AppCompatActivity {
         mIngredients.setText(ingredients);
         mDescription.setText(description);
     }
+
 }
