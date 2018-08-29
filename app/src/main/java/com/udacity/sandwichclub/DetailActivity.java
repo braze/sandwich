@@ -3,6 +3,7 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -73,24 +74,13 @@ public class DetailActivity extends AppCompatActivity {
         String place = sandwich.getPlaceOfOrigin();
         String description = sandwich.getDescription();
 
-        //prepare field "Also known as"
-        StringBuilder sb = new StringBuilder();
-        for (String s : sandwich.getAlsoKnownAs()) {
-            sb.append(s).append(" ");
-        }
-        alsoKnowsAs = sb.toString().trim();
+        alsoKnowsAs = TextUtils.join(", ", sandwich.getAlsoKnownAs());
+
         if (alsoKnowsAs.isEmpty()) {
             alsoKnowsAs = getString(R.string.also_known_is_unknown);
         }
 
-        //prepare ingredients
-        //clear StringBuilder
-        sb.setLength(0);
-
-        for (String item : sandwich.getIngredients()) {
-            sb.append(item).append(", ");
-        }
-        ingredients = sb.toString().trim();
+        ingredients = TextUtils.join(", ", sandwich.getIngredients());
 
         if (ingredients.isEmpty() || ingredients.length() < 2) {
             ingredients = getString(R.string.unknown_ingredients);
