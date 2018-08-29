@@ -75,18 +75,13 @@ public class DetailActivity extends AppCompatActivity {
         String description = sandwich.getDescription();
 
         alsoKnowsAs = TextUtils.join(", ", sandwich.getAlsoKnownAs());
-
         if (alsoKnowsAs.isEmpty()) {
             alsoKnowsAs = getString(R.string.also_known_is_unknown);
         }
 
         ingredients = TextUtils.join(", ", sandwich.getIngredients());
-
         if (ingredients.isEmpty() || ingredients.length() < 2) {
             ingredients = getString(R.string.unknown_ingredients);
-        } else {
-            //get rid of comma in the end
-            ingredients = ingredients.substring(0, ingredients.length() - 1);
         }
 
         //check for place
@@ -105,5 +100,4 @@ public class DetailActivity extends AppCompatActivity {
         mIngredients.setText(ingredients);
         mDescription.setText(description);
     }
-
 }
