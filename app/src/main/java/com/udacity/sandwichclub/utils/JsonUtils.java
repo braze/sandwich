@@ -37,7 +37,6 @@ public class JsonUtils {
             for (int i = 0; i <ingredientsJsonArray.length() ; i++) {
                 ingredients.add(ingredientsJsonArray.getString(i));
             }
-
         } catch (JSONException e) {
             e.printStackTrace();
         }

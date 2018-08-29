@@ -80,7 +80,7 @@ public class DetailActivity extends AppCompatActivity {
         }
         alsoKnowsAs = sb.toString().trim();
         if (alsoKnowsAs.isEmpty()) {
-            alsoKnowsAs = "Other names are unknown";
+            alsoKnowsAs = getString(R.string.also_known_is_unknown);
         }
 
         //prepare ingredients
@@ -93,7 +93,7 @@ public class DetailActivity extends AppCompatActivity {
         ingredients = sb.toString().trim();
 
         if (ingredients.isEmpty() || ingredients.length() < 2) {
-            ingredients = "Unknown ingredients";
+            ingredients = getString(R.string.unknown_ingredients);
         } else {
             //get rid of comma in the end
             ingredients = ingredients.substring(0, ingredients.length() - 1);
@@ -101,12 +101,12 @@ public class DetailActivity extends AppCompatActivity {
 
         //check for place
         if (place.isEmpty()) {
-            place = "Unknown";
+            place = getString(R.string.unknown_plase);
         }
 
         //check for description
         if (description.isEmpty()) {
-            description = "no description";
+            description = getString(R.string.no_description);
         }
 
         //set TextViews
